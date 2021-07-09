@@ -1,0 +1,62 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    {% load static %}  
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">  
+    <script src="{% static 'js/bootstrap.js' %}"></script> 
+</head>  
+<body>  
+<form method="POST" class="post-form" action="/transitions/create" enctype="multipart/form-data">  
+        {% csrf_token %}  
+    
+<div class="container">  
+    <br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Insert new Transition</h3>  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Transition priority:</label>  
+    <div class="col-sm-4">  
+      {{ form.priority }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Transition name:</label>  
+    <div class="col-sm-4">  
+      {{ form.name }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Transition file name:</label>  
+    <div class="col-sm-4">  
+      {{ form.filename }}  
+    </div>  
+  </div>
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Transition thumbnail:</label>  
+    <div class="col-sm-4">  
+      {{ form.thumbnail }}  
+    </div>  
+  </div>
+    <div class="form-group row">  
+      <label class="col-sm-1 col-form-label"></label>  
+      <div class="col-sm-4">  
+        <button type="submit" class="btn btn-success">Submit</button>  
+      </div>  
+  </div>
+  <br>
+  <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+      <a href="/transitions" class="btn btn-primary">Back to transitions</a>
+    </div>  
+  </div>  
+</div>
+</form>  
+</body>  
+</html>
