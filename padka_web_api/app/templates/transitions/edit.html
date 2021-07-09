@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">  
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body>
+<form method="POST" class="post-form" action="/transitions/update/{{transition.id}}" enctype="multipart/form-data">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark p-3">
+    <a class="navbar-brand" href="#">padka-web-api</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/transitions">Transitions </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/reactions">Reactions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/music">Music</a>
+        </li>
+      </ul>
+    </div>
+    <br>    
+    <center><a href="/admin" class="btn btn-secondary m-3">Admin</a></center>  
+  </nav>
+
+
+
+    <div class="container-fluid flex-column  justify-content-center">
+      {% csrf_token %}
+      <div class="container">
+        <br>
+        <div class="form-group  justify-content-center">
+          <label class="col-sm-1 col-form-label"></label>
+          <div class="col-sm-4">
+            <h3>Update Details</h3>
+        </div>
+        <div class="form-group  justify-content-center">
+          <label class="col-sm-2 col-form-label">Transition priority:</label>
+          <input type="text" name="priority" id="id_priority" required value="{{ transition.priority }}" />  
+        </div>
+        <div class="form-group  justify-content-center">
+          <label class="col-sm-2 col-form-label">Transition name:</label>
+          <input type="text" name="name" id="id_name" required value="{{ transition.name }}" />  
+        </div>
+        <div class="form-group  justify-content-center">
+          <label class="col-sm-2 col-form-label">Transition file name:</label>
+          <input type="file" name="filename" id="id_filename" required value="{{ transition.filename }}" />  
+        </div>
+        <div class="form-group  justify-content-center">
+          <label class="col-sm-2 col-form-label">Transition thumbnail:</label>
+          <input type="file" name="thumbnail" id="id_thumbnail" required value="{{ transition.thumbnail }}" />  
+        </div>
+        <div class="form-group ">  
+          <label class="col-sm-1 col-form-label"></label>  
+          <div class="col-sm-4">  
+          <button type="submit" class="btn btn-success">Update</button>  
+          </div> 
+
+        <div class="form-group">  
+          <label class="col-sm-1 col-form-label"></label>  
+          <div class="col-sm-4">  
+            <a href="/transitions" class="btn btn-primary">Back to transitions</a>
+          </div>  
+        </div>  
+
+      </div>
+    </div> 
+</form>  
+</body>  
+</html>  
