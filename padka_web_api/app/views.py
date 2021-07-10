@@ -3,10 +3,13 @@ from .forms import TransitionsForm, ReactionsForm, MusicForm
 from .models import Transitions, Reactions, Music
 from django.core import serializers
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 import json
 
 # Create your views here.  
 # ----- Transitions -----
+
+@login_required(login_url="/admin/")
 def transitions(request):  
     if request.method == "POST":  
         form = TransitionsForm(request.POST, request.FILES)  
@@ -20,16 +23,19 @@ def transitions(request):
         form = TransitionsForm()  
     return render(request,'transitions/index.html',{'form':form})  
 
+@login_required(login_url="/admin/")
 def showTransitions(request):
     transitions = Transitions.objects.all()
     return render(request,"transitions/show.html",{'transitions':transitions})  
 
+@login_required(login_url="/admin/")
 def editTransition(request, id):  
     transition = Transitions.objects.get(id=id)
     request.FILES['filename'] = transition.filename
     request.FILES['thumbnail'] = transition.thumbnail
     return render(request,'transitions/edit.html', {'transition':transition})  
 
+@login_required(login_url="/admin/")
 def updateTransition(request, id):  
     transition = Transitions.objects.get(id=id)  
     form = TransitionsForm(request.POST, request.FILES, instance = transition)  
@@ -38,11 +44,13 @@ def updateTransition(request, id):
         return redirect("/transitions")  
     return render(request, 'transitions/edit.html', {'transition': transition})  
 
+@login_required(login_url="/admin/")
 def destroyTransition(request, id):  
     transition = Transitions.objects.get(id=id)  
     transition.delete()  
     return redirect("/transitions")
 
+@login_required(login_url="/admin/")
 def downloadJsonTransitions(request):
     try:
         transitions = Transitions.objects.all()
@@ -71,6 +79,8 @@ def downloadJsonTransitions(request):
         raise
 # ---------------------
 # ----- Reactions -----
+
+@login_required(login_url="/admin/")
 def reactions(request):  
     if request.method == "POST":  
         form = ReactionsForm(request.POST, request.FILES)  
@@ -84,16 +94,19 @@ def reactions(request):
         form = ReactionsForm()  
     return render(request,'reactions/index.html',{'form':form})  
 
+@login_required(login_url="/admin/")
 def showReactions(request):
     reactions = Reactions.objects.all()
     return render(request,"reactions/show.html",{'reactions':reactions})  
 
+@login_required(login_url="/admin/")
 def editReaction(request, id):  
     reaction = Reactions.objects.get(id=id)
     request.FILES['filename'] = reaction.filename
     request.FILES['thumbnail'] = reaction.thumbnail
     return render(request,'reactions/edit.html', {'reaction':reaction})  
 
+@login_required(login_url="/admin/")
 def updateReaction(request, id):  
     reaction = Reactions.objects.get(id=id)  
     form = ReactionsForm(request.POST, request.FILES, instance = reaction)  
@@ -102,11 +115,13 @@ def updateReaction(request, id):
         return redirect("/reactions")  
     return render(request, 'reactions/edit.html', {'reaction': reaction})  
 
+@login_required(login_url="/admin/")
 def destroyReaction(request, id):  
     reaction = Reactions.objects.get(id=id)  
     reaction.delete()  
     return redirect("/reactions")
 
+@login_required(login_url="/admin/")
 def downloadJsonReactions(request):
     try:
         reactions = Reactions.objects.all()
@@ -135,6 +150,8 @@ def downloadJsonReactions(request):
         raise
 # ---------------------
 # ------- Music -------
+
+@login_required(login_url="/admin/")
 def music(request):  
     if request.method == "POST":  
         form = MusicForm(request.POST, request.FILES)  
@@ -149,16 +166,19 @@ def music(request):
         form = MusicForm()  
     return render(request,'music/index.html',{'form':form})  
 
+@login_required(login_url="/admin/")
 def showMusic(request):
     music = Music.objects.all()
     return render(request,"music/show.html",{'music':music})  
 
+@login_required(login_url="/admin/")
 def editMusic(request, id):  
     music = Music.objects.get(id=id)
     request.FILES['filename'] = music.filename
     request.FILES['thumbnail'] = music.thumbnail
     return render(request,'music/edit.html', {'music':music})  
 
+@login_required(login_url="/admin/")
 def updateMusic(request, id):  
     reaction = Music.objects.get(id=id)  
     form = MusicForm(request.POST, request.FILES, instance = reaction)  
@@ -168,11 +188,13 @@ def updateMusic(request, id):
         return redirect("/music")  
     return render(request, 'music/edit.html', {'music': music})  
 
+@login_required(login_url="/admin/")
 def destroyMusic(request, id):  
     music = Music.objects.get(id=id)  
     music.delete()  
     return redirect("/music")
 
+@login_required(login_url="/admin/")
 def downloadJsonMusic(request):
     try:
         music = Music.objects.all()
@@ -209,6 +231,8 @@ def downloadJsonMusic(request):
         raise
 # ---------------------
 # ------- Common ------
+
+@login_required(login_url="/admin/")
 def downloadAllAsJSON(request):
     try:
         transitions = Transitions.objects.all()
