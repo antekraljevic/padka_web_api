@@ -1,0 +1,68 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Music</title>  
+     {% load static %}  
+     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">  
+     <script src="{% static 'js/bootstrap.js' %}"></script> 
+</head>  
+<body>  
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark p-3">	
+        <a class="navbar-brand" href="#">padka-web-api</a>	
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">	
+          <span class="navbar-toggler-icon"></span>	
+        </button>	
+        <div class="collapse navbar-collapse" id="navbarCollapse">	
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">	
+              <a class="nav-link" href="/transitions">Transitions </a>	
+            </li>
+            <li class="nav-item">	
+              <a class="nav-link" href="/reactions">Reactions</a>	
+            </li>	
+            <li class="nav-item active">	
+              <a class="nav-link active" href="/music">Music</a>	
+            </li>	
+          </ul>	
+        </div>	
+        <br>   
+        <center><a href="/downloadAllAsJSON" class="btn btn-success m-3">Download All as JSON</a></center> 	
+        <center><a href="/admin" class="btn btn-secondary m-3">Admin</a></center>  
+      </nav>
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>Music ID</th>  
+        <th>Music Priority</th>  
+        <th>Music Name</th>  
+        <th>Music File Name</th>  
+        <th>Music Thumbnail</th>
+        <th>Music Type</th>
+        <th>Actions</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for mus in music %}  
+    <tr>  
+        <td>{{ mus.id }}</td>  
+        <td>{{ mus.priority }}</td>  
+        <td>{{ mus.name }}</td>  
+        <td>{{ mus.filename.url }}</td>  
+        <td>{{ mus.thumbnail.url }}</td>
+        <td>{{ mus.type }}</td>
+        <td>  
+            <a href="/music/editMusic/{{ mus.id }}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/music/deleteMusic/{{ mus.id }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/music/createMusic" class="btn btn-primary">Add New Music</a></center>  
+<br>
+<center><a href="/music/downloadJsonMusic" class="btn btn-success">Download JSON</a></center>  
+</body>  
+</html>  

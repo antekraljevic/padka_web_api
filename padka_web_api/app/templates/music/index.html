@@ -1,0 +1,90 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Create new music</title>  
+    {% load static %}  
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">  
+    <script src="{% static 'js/bootstrap.js' %}"></script> 
+</head>  
+<body>  
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark p-3">	
+    <a class="navbar-brand" href="#">padka-web-api</a>	
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">	
+      <span class="navbar-toggler-icon"></span>	
+    </button>	
+    <div class="collapse navbar-collapse" id="navbarCollapse">	
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">	
+          <a class="nav-link" href="/transitions">Transitions </a>	
+        </li>
+        <li class="nav-item">	
+          <a class="nav-link" href="/reactions">Reactions</a>	
+        </li>	
+        <li class="nav-item active">	
+          <a class="nav-link active" href="/music">Music</a>	
+        </li>	
+      </ul>	
+    </div>	
+    <br>    	
+    <center><a href="/downloadAllAsJSON" class="btn btn-success m-3">Download All as JSON</a></center>
+    <center><a href="/admin" class="btn btn-secondary m-3">Admin</a></center>  	
+  </nav>
+<form method="POST" class="post-form" action="/music/createMusic" enctype="multipart/form-data">  
+        {% csrf_token %}  
+    
+<div class="container">  
+    <br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Insert new Music</h3>  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Music priority:</label>  
+    <div class="col-sm-4">  
+      {{ form.priority }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Music name:</label>  
+    <div class="col-sm-4">  
+      {{ form.name }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Music file name:</label>  
+    <div class="col-sm-4">  
+      {{ form.filename }}  
+    </div>  
+  </div>
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Music thumbnail:</label>  
+    <div class="col-sm-4">  
+      {{ form.thumbnail }}  
+    </div>  
+  </div>
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Music type:</label>  
+    <div class="col-sm-4">  
+      {{ form.type }}  
+    </div>  
+  </div>
+    <div class="form-group row">  
+      <label class="col-sm-1 col-form-label"></label>  
+      <div class="col-sm-4">  
+        <button type="submit" class="btn btn-success">Submit</button>  
+      </div>  
+  </div>
+  <br>
+  <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+      <a href="/music" class="btn btn-primary">Back to music</a>
+    </div>  
+  </div>  
+</div>
+</form>  
+</body>  
+</html>
