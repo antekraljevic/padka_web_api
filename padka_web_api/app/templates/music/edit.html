@@ -31,60 +31,60 @@
     <center><a href="/admin" class="btn btn-secondary m-3">Admin</a></center>  	
   </nav> 
 
-<form method="POST" class="post-form" action="/music/updateMusic/{{music.id}}" enctype="multipart/form-data">
-        {% csrf_token %}
-    <div class="container">
-<br>
-    <div class="form-group row">
-    <label class="col-sm-1 col-form-label"></label>
-    <div class="col-sm-4">
-    <h3>Update Details</h3>
+  <form method="POST" class="post-form" action="/music/updateMusic/{{ target_id }}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">  
+      <br>  
+      <div class="form-group row">  
+      <label class="col-sm-1 col-form-label"></label>  
+      <div class="col-sm-4">  
+      <h3>Update Music</h3>  
+      </div>  
+    </div>  
+    <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">Music priority:</label>  
+      <div class="col-sm-4">  
+        {{ music.priority }}  
+      </div>  
+    </div>  
+      <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">Music name:</label>  
+      <div class="col-sm-4">  
+        {{ music.name }}  
+      </div>  
+    </div>  
+      <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">Music file name:</label>  
+      <div class="col-sm-4">  
+        {{ music.filename }}  
+      </div>  
     </div>
-  </div> 
-  <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Music priority:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="priority" id="id_priority" required value="{{ music.priority }}" />  
+      <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">Music thumbnail:</label>  
+      <div class="col-sm-4">  
+        {{ music.thumbnail }}  
+      </div>  
+    </div>
+    <div class="form-group row">  
+      <label class="col-sm-2 col-form-label">Music type:</label>  
+      <div class="col-sm-4">  
+        {{ music.type }}  
+      </div>  
+    </div>
+      <div class="form-group row">  
+        <label class="col-sm-1 col-form-label"></label>  
+        <div class="col-sm-4">  
+          <button type="submit" class="btn btn-success">Update</button>  
+        </div>  
+    </div>
+    <br>
+    <div class="form-group row">  
+      <label class="col-sm-1 col-form-label"></label>  
+      <div class="col-sm-4">  
+        <a href="/music" class="btn btn-primary">Back to music</a>
+      </div>  
     </div>  
   </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Music name:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="name" id="id_name" required value="{{ music.name }}" />  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Music file name:</label>  
-    <div class="col-sm-4">  
-        <input type="file" name="filename" id="id_filename" required value="{{ music.filename }}" />  
-    </div>  
-  </div>   
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Music thumbnail:</label>  
-    <div class="col-sm-4">  
-        <input type="file" name="thumbnail" id="id_thumbnail" required value="{{ music.thumbnail }}" />  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Music type:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="type" id="id_type" required value="{{ music.type }}" />  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
-    <div class="col-sm-4">  
-    <button type="submit" class="btn btn-success">Update</button>  
-    </div>  
-  </div> 
-  <br> 
-  <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
-    <div class="col-sm-4">  
-      <a href="/music" class="btn btn-primary">Back to music</a>
-    </div>  
-  </div>
-    </div>  
-</form>  
+</form> 
 </body>  
 </html>  

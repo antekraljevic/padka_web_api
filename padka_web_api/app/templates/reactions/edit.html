@@ -31,54 +31,54 @@
   <center><a href="/admin" class="btn btn-secondary m-3">Admin</a></center>  	
 </nav>
 
-<form method="POST" class="post-form" action="/reactions/update/{{reaction.id}}" enctype="multipart/form-data">
-        {% csrf_token %}
-    <div class="container">
-<br>
-    <div class="form-group row">
-    <label class="col-sm-1 col-form-label"></label>
-    <div class="col-sm-4">
-    <h3>Update Details</h3>
-    </div>
-  </div> 
+<form method="POST" class="post-form" action="/reactions/updateReaction/{{ target_id }}" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container">  
+    <br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Update Reaction</h3>  
+    </div>  
+  </div>  
   <div class="form-group row">  
     <label class="col-sm-2 col-form-label">Reaction priority:</label>  
     <div class="col-sm-4">  
-        <input type="text" name="priority" id="id_priority" required value="{{ reaction.priority }}" />  
+      {{ reaction.priority }}  
     </div>  
   </div>  
     <div class="form-group row">  
     <label class="col-sm-2 col-form-label">Reaction name:</label>  
     <div class="col-sm-4">  
-        <input type="text" name="name" id="id_name" required value="{{ reaction.name }}" />  
+      {{ reaction.name }}  
     </div>  
   </div>  
     <div class="form-group row">  
     <label class="col-sm-2 col-form-label">Reaction file name:</label>  
     <div class="col-sm-4">  
-        <input type="file" name="filename" id="id_filename" required value="{{ reaction.filename }}" />  
+      {{ reaction.filename }}  
     </div>  
-  </div>   
+  </div>
     <div class="form-group row">  
     <label class="col-sm-2 col-form-label">Reaction thumbnail:</label>  
     <div class="col-sm-4">  
-        <input type="file" name="thumbnail" id="id_thumbnail" required value="{{ reaction.thumbnail }}" />  
+      {{ reaction.thumbnail }}  
     </div>  
-  </div>  
+  </div>
     <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
-    <div class="col-sm-4">  
-    <button type="submit" class="btn btn-success">Update</button>  
-    </div>  
-  </div> 
-  <br> 
+      <label class="col-sm-1 col-form-label"></label>  
+      <div class="col-sm-4">  
+        <button type="submit" class="btn btn-success">Update</button>  
+      </div>  
+  </div>
+  <br>
   <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  
       <a href="/reactions" class="btn btn-primary">Back to reactions</a>
     </div>  
-  </div>
-    </div>  
-</form>  
+  </div>  
+</div>  
+</form>
 </body>  
 </html>  

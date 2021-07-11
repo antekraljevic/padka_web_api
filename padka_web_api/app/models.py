@@ -19,7 +19,7 @@ class Reactions(models.Model):
 
 class Music(models.Model):
     def get_filename_path(instance, filename):
-        return 'assetss/music/{0}/files/{0}/{1}'.format(instance.type, filename)
+        return 'assetss/music/files/{0}/{1}'.format(instance.type, filename)
         
     def get_thumbnail_path(instance, filename):
         return 'assets/music/thumbnail/{0}/{1}'.format(instance.type, filename)

@@ -31,9 +31,8 @@ def showTransitions(request):
 @login_required(login_url="/admin/")
 def editTransition(request, id):  
     transition = Transitions.objects.get(id=id)
-    request.FILES['filename'] = transition.filename
-    request.FILES['thumbnail'] = transition.thumbnail
-    return render(request,'transitions/edit.html', {'transition':transition})  
+    form = TransitionsForm(request.POST or None, request.FILES or None, instance=transition)
+    return render(request,'transitions/edit.html', {'transition':form, 'target_id':id})  
 
 @login_required(login_url="/admin/")
 def updateTransition(request, id):  
@@ -102,9 +101,8 @@ def showReactions(request):
 @login_required(login_url="/admin/")
 def editReaction(request, id):  
     reaction = Reactions.objects.get(id=id)
-    request.FILES['filename'] = reaction.filename
-    request.FILES['thumbnail'] = reaction.thumbnail
-    return render(request,'reactions/edit.html', {'reaction':reaction})  
+    form = ReactionsForm(request.POST or None, request.FILES or None, instance=reaction)
+    return render(request,'reactions/edit.html', {'reaction':form, 'target_id':id})  
 
 @login_required(login_url="/admin/")
 def updateReaction(request, id):  
@@ -174,9 +172,8 @@ def showMusic(request):
 @login_required(login_url="/admin/")
 def editMusic(request, id):  
     music = Music.objects.get(id=id)
-    request.FILES['filename'] = music.filename
-    request.FILES['thumbnail'] = music.thumbnail
-    return render(request,'music/edit.html', {'music':music})  
+    form = MusicForm(request.POST or None, request.FILES or None, instance=music)
+    return render(request,'music/edit.html', {'music':form, 'target_id':id})
 
 @login_required(login_url="/admin/")
 def updateMusic(request, id):  
